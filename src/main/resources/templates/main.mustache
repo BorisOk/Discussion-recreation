@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+    <title>Main</title>
+</head>
+<body>
+<h1>Welcome</h1>
+
+<div>
+    <form method="post">
+        <label><input type="text" name="text" placeholder="Введите сообщение" /></label>
+        <label><input type="text" name="country" placeholder="Введите страну отдыха"></label>
+        <button type="submit">Post</button>
+    </form>
+</div>
+<div><h4>List of comments</h4></div>
+<form method="post" action="filter">
+    <label><input type="text" name="filter" placeholder="Введите страну для поиска"></label>
+    <button type="submit">Find</button>
+</form>
+{{#comments}}
+    <div>
+        <b>{{id}}</b>
+        <span>{{text}}</span>
+        <i>{{country}}</i>
+    </div>
+{{/comments}}
+</body>
+</html>
