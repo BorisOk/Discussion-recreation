@@ -25,7 +25,9 @@ public class MainController {
     @GetMapping("/main")
     public String main(Map<String, Object> model) {
         Iterable<Comment> comments = commentRepo.findAll();
+
         model.put("comments", comments);
+
         return "main";
     }
 
@@ -37,19 +39,24 @@ public class MainController {
             commentRepo.save(comment);
         }
         Iterable<Comment> comments = commentRepo.findAll();
+
         model.put("comments", comments);
+
         return "main";
     }
 
     @PostMapping("filter")
     public String filter(@RequestParam String filter, Map<String, Object> model) {
         Iterable<Comment> comments;
+
         if (filter != null && !filter.isEmpty()) {
             comments = commentRepo.findByCountry(filter);
         } else {
             comments = commentRepo.findAll();
         }
+
         model.put("comments", comments);
+
         return "main";
     }
 }

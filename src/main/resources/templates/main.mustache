@@ -4,18 +4,26 @@
     <title>Main</title>
 </head>
 <body>
+
+<form action="/logout" method="post">
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+    <input type="submit" class="buttonExit" value="Exit">
+</form>
+
 <h1>Welcome</h1>
 
 <div>
     <form method="post">
         <label><input type="text" name="text" placeholder="Введите сообщение" /></label>
         <label><input type="text" name="country" placeholder="Введите страну отдыха"></label>
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
         <button type="submit">Post</button>
     </form>
 </div>
 <div><h4>List of comments</h4></div>
 <form method="post" action="filter">
     <label><input type="text" name="filter" placeholder="Введите страну для поиска"></label>
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
     <button type="submit">Find</button>
 </form>
 {{#comments}}
