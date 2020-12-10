@@ -2,35 +2,43 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
 <head>
     <title>Main</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
 
+<body>
 <form action="/logout" method="post">
     <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
     <input type="submit" class="buttonExit" value="Exit">
 </form>
 
-<h1>Welcome</h1>
+<h1 class="section-title">Welcome</h1>
 
+<h1 class="section-title">Share your impressions of your travels!</h1>
+<p style="text-align: center;"><img src="images/beach.jpg" alt="photo" title="recreation" width="600" height="340">
+<img src="images/mountains.jpg" alt="photo" title="recreation" width="600" height="340">
+<img src="images/paris.jpg" alt="photo" title="recreation" width="600" height="340">
 <div>
     <form method="post">
-        <label><input type="text" name="text" placeholder="Введите сообщение" /></label>
-        <label><input type="text" name="country" placeholder="Введите страну отдыха"></label>
+        <label><textarea class="comment" type="text" name="text" placeholder="Ваш комментарий..."></textarea></label>
+        <label><textarea class="country" type="text" name="country" placeholder="Страна путешествия"></textarea></label>
         <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
-        <button type="submit">Post</button>
+        <input type="submit" class="button4" value="Post">
     </form>
 </div>
-<div><h4>List of comments</h4></div>
+<div><h2 class="section-title">List of comments</h2></div>
 <form method="post" action="filter">
-    <label><input type="text" name="filter" placeholder="Введите страну для поиска"></label>
+    <label><textarea class="country-search" type="text" name="filter" placeholder="Введите страну для поиска"></textarea></label>
     <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
-    <button type="submit">Find</button>
+    <input type="submit" class="button4" value="Find">
 </form>
+
 {{#comments}}
     <div>
-        <b>{{id}}</b>
-        <span>{{text}}</span>
-        <i>{{country}}</i>
+        <b>*</b>
+        <b><i>{{country}}</i></b>
+        <b> : </b>
+        <i>{{text}}</i>
+        <hr>
     </div>
 {{/comments}}
 </body>
