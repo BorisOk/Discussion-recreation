@@ -11,7 +11,9 @@
     <input type="submit" class="buttonExit" value="Exit">
 </form>
 
-<h1 class="section-title">Welcome</h1>
+<h1 class="section-title">
+    {{#user}} Welcome, {{username}} {{/user}}
+</h1>
 
 <h1 class="section-title">Share your impressions of your travels!</h1>
 <p style="text-align: center;"><img src="images/beach.jpg" alt="photo" title="recreation" width="600" height="340">
@@ -35,6 +37,7 @@
 {{#comments}}
     <div>
         <b>*</b>
+        <strong>{{authorName}}</strong>
         <b><i>{{country}}</i></b>
         <b> : </b>
         <i>{{text}}</i>
