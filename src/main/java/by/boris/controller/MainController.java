@@ -4,10 +4,10 @@ import by.boris.entity.User;
 import by.boris.repo.CommentRepo;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import java.util.Map;
 import java.util.Objects;
 
@@ -25,12 +25,18 @@ public class MainController {
     }
 
     @GetMapping("/main")
-    public String main(@AuthenticationPrincipal User user,
-                       Map<String, Object> model) {
+    public String main(@RequestParam(required = false, defaultValue = "") String filter,
+                       Model model) {
         Iterable<Comment> comments = commentRepo.findAll();
 
-        model.put("comments", comments);
-        model.put("user",user);
+        if (filter != null && !filter.isEmpty()) {
+            comments = commentRepo.findByCountry(filter);
+        } else {
+            comments = commentRepo.findAll();
+        }
+
+        model.addAttribute("comments", comments);
+        model.addAttribute("filter", filter);
         return "main";
     }
 
@@ -44,22 +50,8 @@ public class MainController {
             Comment comment = new Comment(text, country, user);
             commentRepo.save(comment);
         }
+
         Iterable<Comment> comments = commentRepo.findAll();
-
-        model.put("comments", comments);
-
-        return "main";
-    }
-
-    @PostMapping("filter")
-    public String filter(@RequestParam String filter, Map<String, Object> model) {
-        Iterable<Comment> comments;
-
-        if (filter != null && !filter.isEmpty()) {
-            comments = commentRepo.findByCountry(filter);
-        } else {
-            comments = commentRepo.findAll();
-        }
 
         model.put("comments", comments);
 

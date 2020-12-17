@@ -1,7 +1,5 @@
 package by.boris.entity;
 
-import lombok.Data;
-
 import javax.persistence.*;
 
 @Entity
@@ -16,9 +14,6 @@ public class Comment {
     @JoinColumn(name = "user_id")
     private User author;
 
-    public Comment(String text, String country, org.apache.catalina.User user) {
-    }
-
     public Comment(String text, String country, User user) {
         this.text = text;
         this.country = country;
@@ -26,6 +21,10 @@ public class Comment {
     }
 
     public Comment() {
+    }
+
+    public String getAuthorName() {
+        return author != null ? author.getUsername() : "<none>";
     }
 
     public Integer getId() {
@@ -58,9 +57,5 @@ public class Comment {
 
     public void setAuthor(User author) {
         this.author = author;
-    }
-
-    private String getAuthorName() {
-        return author != null ? author.getUsername() : "<none>";
     }
 }

@@ -1,7 +1,0 @@
-.some-class {
-    width:200px;
-    padding:20px;
-}
-*, *:before, *:after {
-    box-sizing: border-box;
-}
