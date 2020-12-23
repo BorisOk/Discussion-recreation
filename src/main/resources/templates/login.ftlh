@@ -2,5 +2,6 @@
 <#import "detail/login.ftlh" as l>
 <@o.page>
     <h3>Entry</h3>
+    ${message?ifExists}
     <@l.login "/login" false/>
 </@o.page>

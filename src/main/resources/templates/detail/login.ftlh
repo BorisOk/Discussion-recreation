@@ -8,8 +8,15 @@
 
         <div class="form-group">
             <label for="exampleInputEmail1"> Password: </label>
-            <input type="password" name="password" class="form-control" placeholder="password"/>
+            <input type="password" name="password" class="form-control" placeholder="Password"/>
         </div>
+
+        <#if isRegistreForm>
+        <div class="form-group">
+            <label for="exampleInputEmail1"> Email: </label>
+            <input type="email" name="email" class="form-control" placeholder="mail@mail.ru"/>
+        </div>
+        </#if>
 
         <br>
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
