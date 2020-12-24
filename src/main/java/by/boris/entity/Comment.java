@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Comment {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     @Column(length = 5_000)
     private String text;
     private String country;
@@ -27,11 +27,11 @@ public class Comment {
         return author != null ? author.getUsername() : "<none>";
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
