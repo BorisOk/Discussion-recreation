@@ -5,15 +5,15 @@
     <form method="post">
         <div class="form-group">
             <label for="exampleInputEmail1"> Password: </label>
-            <input type="password" name="password" class="form-control" placeholder="Password"/>
+            <input type="password" name="password" class="form-control" placeholder="Password" />
         </div>
 
             <div class="form-group">
                 <label for="exampleInputEmail1"> Email: </label>
-                <input type="email" name="email" class="form-control" placeholder="mail@mail.ru" value="${email!''}"/>
+                <input type="email" name="email" class="form-control" placeholder="mail@mail.ru" value="${email!''}" />
             </div>
 
-        <br>
+        <br/>
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
